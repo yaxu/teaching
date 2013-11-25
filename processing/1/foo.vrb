@@ -1,0 +1,33 @@
+\frametitle {Draw infinite circles}
+
+Make the canvas a bit bigger in the setup phase
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void} \FunctionTok{setup}\NormalTok{() \{}
+  \FunctionTok{size}\NormalTok{(}\DecValTok{400}\NormalTok{,}\DecValTok{400}\NormalTok{);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Draw a circle in a
+\href{http://processing.org/reference/random\_.html}{random} position in
+the draw phase
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void} \FunctionTok{draw}\NormalTok{() \{}
+  \FunctionTok{ellipse}\NormalTok{(random);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  Randomise position
+\item
+  Randomise colour
+\item
+  Repeat (draw phase)
+\end{itemize}
+
