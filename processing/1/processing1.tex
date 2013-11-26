@@ -35,6 +35,7 @@
 \newcommand{\RegionMarkerTok}[1]{{#1}}
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
 \newcommand{\NormalTok}[1]{{#1}}
+\usepackage{enumerate}
 \usepackage{url}
 % Comment these out if you don't want a slide with just the
 % part/section/subsection/subsubsection title:
@@ -47,8 +48,9 @@
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \setcounter{secnumdepth}{0}
 
-\title{Processing 1 - Introduction}
-\author{Alex McLean}
+\title{Music Technology}
+\author{Processing 1 - Introduction}
+\date{Alex McLean}
 
 \begin{document}
 \frame{\titlepage}
@@ -128,7 +130,7 @@ File -\textgreater{} Examples
 
 \begin{itemize}
 \item
-  Draw a circle
+  Draw some shapes
 \item
   Play a sound
 \end{itemize}
@@ -137,10 +139,8 @@ File -\textgreater{} Examples
 
 \begin{frame}[fragile]\frametitle{Draw a circle}
 
-Use the \texttt{ellipse} function call
-
-Reference:
-\href{http://processing.org/reference/ellipse\_.html}{Ellipse}
+Use the \href{http://processing.org/reference/ellipse\_.html}{ellipse}
+function call
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -149,114 +149,181 @@ Reference:
 \end{Highlighting}
 \end{Shaded}
 
-Understand:
-
-\begin{itemize}
-\item
-  Cartesian coordinates and origins
-\item
-  \url{http://processing.org/tutorials/drawing/}
-\end{itemize}
-
 \end{frame}
 
-\begin{frame}\frametitle{Make a sound}
+\begin{frame}[fragile]\frametitle{Draw a square}
 
-Add the minim library to your sketch.
-
-\end{frame}
-
-\begin{frame}[fragile]\frametitle{Draw ten circles}
-
-In different positions, using copy and paste
+Use the \href{http://processing.org/reference/rect\_.html}{rect}
+function call
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{// x, y, width, height}
+\FunctionTok{rect}\NormalTok{(}\DecValTok{30}\NormalTok{,}\DecValTok{30}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Change the brush colour}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fill}\NormalTok{(}\DecValTok{255}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{);}
 \FunctionTok{ellipse}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{);}
-\FunctionTok{ellipse}\NormalTok{(}\DecValTok{20}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{);}
-\FunctionTok{ellipse}\NormalTok{(}\DecValTok{30}\NormalTok{,}\DecValTok{30}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{);}
-\end{Highlighting}
-\end{Shaded}
 
-and so on\ldots{}
+\FunctionTok{fill}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{255}\NormalTok{,}\DecValTok{0}\NormalTok{);}
+\FunctionTok{rect}\NormalTok{(}\DecValTok{30}\NormalTok{,}\DecValTok{30}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{);}
 
-\end{frame}
-
-\begin{frame}[fragile]\frametitle{Draw a hundred circles}
-
-Time to use variables and loops.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{// Initialise variable, this will be our loop counter}
-\DataTypeTok{int} \NormalTok{i = }\DecValTok{0}\NormalTok{;}
-
-\CommentTok{// repeat until test fails}
-\KeywordTok{while} \NormalTok{(i < }\DecValTok{100}\NormalTok{) \{}
-  \FunctionTok{ellipse}\NormalTok{(i*}\DecValTok{10}\NormalTok{, i*}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{);}
-  \CommentTok{// increment}
-  \NormalTok{i = i + }\DecValTok{1}\NormalTok{;}
-\NormalTok{\}}
+\FunctionTok{fill}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{255}\NormalTok{);}
+\CommentTok{// x1, y1, x2, y2, x3, y3}
+\FunctionTok{triangle}\NormalTok{(}\DecValTok{40}\NormalTok{,}\DecValTok{40}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{40}\NormalTok{,}\DecValTok{55}\NormalTok{,}\DecValTok{45}\NormalTok{);}
 \end{Highlighting}
 \end{Shaded}
 
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Draw a hundred circles}
+\begin{frame}[fragile]\frametitle{Exercise 1}
 
-Alternative loop form, with \texttt{for} you initialise, test and
-increment in one line:
+Draw a face (or something) using fill, stroke, ellipse, rect and line.
+
+Reminder:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{for} \NormalTok{(}\DataTypeTok{int} \NormalTok{i = }\DecValTok{0}\NormalTok{; i < }\DecValTok{100}\NormalTok{; i = i + }\DecValTok{1}\NormalTok{) \{}
-  \FunctionTok{line}\NormalTok{(i*}\DecValTok{10}\NormalTok{, i*}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{);}
+\CommentTok{// red, green, blue component from 0 to 255}
+\FunctionTok{fill}\NormalTok{(}\DecValTok{255}\NormalTok{, }\DecValTok{255}\NormalTok{, }\DecValTok{255}\NormalTok{);}
+\CommentTok{// Same, but for line colour (e.g. around a shape)}
+\FunctionTok{stroke}\NormalTok{(}\DecValTok{255}\NormalTok{, }\DecValTok{255}\NormalTok{, }\DecValTok{255}\NormalTok{);}
+
+\CommentTok{// x, y, width, height in pixels}
+\FunctionTok{ellipse}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{);}
+
+\CommentTok{// same as ellipse}
+\FunctionTok{rect}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{);}
+
+\CommentTok{// fromX, fromY, toX, toY}
+\FunctionTok{line}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{50}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Loops - Draw ten squares}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int} \NormalTok{count = }\DecValTok{0}\NormalTok{;}
+\KeywordTok{while} \NormalTok{(count < }\DecValTok{10}\NormalTok{) \{}
+  \FunctionTok{fill}\NormalTok{((}\DecValTok{255}\NormalTok{/}\DecValTok{10}\NormalTok{) * count, }\DecValTok{255}\NormalTok{, }\DecValTok{0}\NormalTok{);}
+  \FunctionTok{rect}\NormalTok{(count * }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{);}
+  \CommentTok{// add 1 to count}
+  \NormalTok{count++;}
 \NormalTok{\} }
 \end{Highlighting}
 \end{Shaded}
 
-Shorthand for incrementing, this is the same as \texttt{i = i + 1}:
+or
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{++i;}
+\KeywordTok{for} \NormalTok{(}\DataTypeTok{int} \NormalTok{count = }\DecValTok{0}\NormalTok{; count < }\DecValTok{10}\NormalTok{; count++) \{}
+  \FunctionTok{fill}\NormalTok{((}\DecValTok{255}\NormalTok{/}\DecValTok{10}\NormalTok{) * count, }\DecValTok{255}\NormalTok{, }\DecValTok{0}\NormalTok{);}
+  \FunctionTok{rect}\NormalTok{(count * }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{);}
+\NormalTok{\} }
 \end{Highlighting}
 \end{Shaded}
 
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Draw infinite circles}
+\begin{frame}[fragile]\frametitle{Exercise 2: Make a sound}
 
-Make the canvas a bit bigger in the setup phase
+Add the minim library to your sketch: (Sketch -\textgreater{} Import
+library -\textgreater{} minim)
+
+Download sound from \url{http://yaxu.org/tmp/kick.wav}
+
+Add the sound to your sketch with Sketch -\textgreater{} Add file
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{// Initialise audio}
+\NormalTok{Minim minim = }\KeywordTok{new} \FunctionTok{Minim}\NormalTok{(}\KeywordTok{this}\NormalTok{);}
+
+\CommentTok{// Prepare a sound}
+\NormalTok{AudioSample kick = minim.}\FunctionTok{loadSample}\NormalTok{(}\StringTok{"kick.wav"}\NormalTok{);}
+
+\CommentTok{// Trigger the sound}
+\NormalTok{kick.}\FunctionTok{trigger}\NormalTok{();}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Animation the Processing way}
+
+Does things in \texttt{setup()} once, and then in \texttt{draw()} every
+frame
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Minim minim;}
+\NormalTok{AudioSample kick;}
+
 \DataTypeTok{void} \FunctionTok{setup}\NormalTok{() \{}
-  \FunctionTok{size}\NormalTok{(}\DecValTok{400}\NormalTok{,}\DecValTok{400}\NormalTok{);}
+  \CommentTok{// make the canvas a bit bigger}
+  \FunctionTok{setup}\NormalTok{(}\DecValTok{300}\NormalTok{,}\DecValTok{300}\NormalTok{);}
+  \NormalTok{minim = }\KeywordTok{new} \FunctionTok{Minim}\NormalTok{(}\KeywordTok{this}\NormalTok{);}
+  \NormalTok{kick = minim.}\FunctionTok{loadSample}\NormalTok{(}\StringTok{"kick.wav"}\NormalTok{);}
+  \FunctionTok{frameRate}\NormalTok{(}\DecValTok{2}\NormalTok{);}
 \NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
 
-Draw a circle in a
-\href{http://processing.org/reference/random\_.html}{random} position in
-the draw phase
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \DataTypeTok{void} \FunctionTok{draw}\NormalTok{() \{}
-  \FunctionTok{ellipse}\NormalTok{(random);}
+  \FunctionTok{ellipse}\NormalTok{(}\FunctionTok{random}\NormalTok{(width),}\FunctionTok{random}\NormalTok{(height),}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{);}
+  \NormalTok{kick.}\FunctionTok{trigger}\NormalTok{();}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Exercise 3}
+
+\begin{enumerate}[1.]
 \item
-  Randomise position
+  Make a shape move
+
+  \begin{itemize}
+  \item
+    Add a global \texttt{float} variable called \texttt{bally} that
+    stores the y position of the shape
+  \item
+    Add another global \texttt{float} variable that stores the speed of
+    the shape
+  \item
+    Add \texttt{speed} to \texttt{bally} every frame (i.e.~within
+    \texttt{draw()})
+  \end{itemize}
 \item
-  Randomise colour
+  Make the shape bounce off the edges of the sketch and make a sound
+
+  \begin{itemize}
+  \item
+    have an \texttt{if} statement that tests whether
+    \texttt{bally \textgreater{} height}
+  \item
+    when that is true, play a sound and invert \texttt{speed}, (i.e.~set
+    \texttt{speed = 0 - speed})
+  \item
+    do something similar for the top of the sketch (i.e.~when
+    \texttt{bally} \textless{} 0)
+  \end{itemize}
 \item
-  Repeat (draw phase)
-\end{itemize}
+  Challenges: have multiple shapes, or add gravity effect.
+\item
+  Challenge question: Could we replace the \texttt{float} variables with
+  \texttt{int} variables? What is the advantage of either?
+\end{enumerate}
 
 \end{frame}
 
