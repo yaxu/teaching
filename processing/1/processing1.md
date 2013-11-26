@@ -97,7 +97,7 @@ line(0,0,50,50);
 
 # Exercise 1
 
-Draw a face (or something) using fill, stroke, ellipse, rect and line.
+Draw a face (or something) using fill, stroke, ellipse, rect and line. For more see "2D primitives" here: <http://processing.org/reference>
 
 Reminder:
 
@@ -117,12 +117,14 @@ rect(20, 20, 10, 10);
 line(40, 40, 50, 50);
 ~~~~
 
+
+
 # Loops - Draw ten squares
 
 ~~~~ {#mycode .java}
 int count = 0;
 while (count < 10) {
-  fill((255/10) * count, 255, 0);
+  fill(255 * (count/10.0), 255, 0);
   rect(count * 10, 10, 10, 10);
   // add 1 to count
   count = count + 1;
@@ -133,7 +135,7 @@ or
 
 ~~~~ {#mycode .java}
 for (int count = 0; count < 10; count++) {
-  fill((255/10) * count, 255, 0);
+  fill(255 * (count/10.0), 255, 0);
   rect(count * 10, 10, 10, 10);
 } 
 ~~~~

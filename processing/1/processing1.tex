@@ -195,6 +195,8 @@ Specify colour as red, green and blue components, from 0 to 255.
 \begin{frame}[fragile]\frametitle{Exercise 1}
 
 Draw a face (or something) using fill, stroke, ellipse, rect and line.
+For more see ``2D primitives'' here:
+\url{http://processing.org/reference}
 
 Reminder:
 
@@ -224,7 +226,7 @@ Reminder:
 \begin{Highlighting}[]
 \DataTypeTok{int} \NormalTok{count = }\DecValTok{0}\NormalTok{;}
 \KeywordTok{while} \NormalTok{(count < }\DecValTok{10}\NormalTok{) \{}
-  \FunctionTok{fill}\NormalTok{((}\DecValTok{255}\NormalTok{/}\DecValTok{10}\NormalTok{) * count, }\DecValTok{255}\NormalTok{, }\DecValTok{0}\NormalTok{);}
+  \FunctionTok{fill}\NormalTok{(}\DecValTok{255} \NormalTok{* (count/}\FloatTok{10.0}\NormalTok{), }\DecValTok{255}\NormalTok{, }\DecValTok{0}\NormalTok{);}
   \FunctionTok{rect}\NormalTok{(count * }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{);}
   \CommentTok{// add 1 to count}
   \NormalTok{count = count + }\DecValTok{1}\NormalTok{;}
@@ -237,7 +239,7 @@ or
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{for} \NormalTok{(}\DataTypeTok{int} \NormalTok{count = }\DecValTok{0}\NormalTok{; count < }\DecValTok{10}\NormalTok{; count++) \{}
-  \FunctionTok{fill}\NormalTok{((}\DecValTok{255}\NormalTok{/}\DecValTok{10}\NormalTok{) * count, }\DecValTok{255}\NormalTok{, }\DecValTok{0}\NormalTok{);}
+  \FunctionTok{fill}\NormalTok{(}\DecValTok{255} \NormalTok{* (count/}\FloatTok{10.0}\NormalTok{), }\DecValTok{255}\NormalTok{, }\DecValTok{0}\NormalTok{);}
   \FunctionTok{rect}\NormalTok{(count * }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{);}
 \NormalTok{\} }
 \end{Highlighting}
