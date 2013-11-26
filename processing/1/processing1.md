@@ -1,4 +1,4 @@
-% Music Technology
+% MUSI3620/40 Music Technology
 % Processing 1 - Introduction
 % Alex McLean
 
@@ -143,7 +143,7 @@ for (int count = 0; count < 10; count++) {
 Add the minim library to your sketch:
   (Sketch -> Import library -> minim)
 
-Download sound from <http://yaxu.org/tmp/kick.wav>
+Download sound from <http://is.gd/kickdrum>
 
 Add the sound to your sketch with Sketch -> Add file
 
@@ -171,7 +171,7 @@ void setup() {
   size(300,300);
   Minim minim = new Minim(this);
   kick = minim.loadSample("kick.wav");
-  // draw two frames per second
+  // follow draw() two times every second
   frameRate(2);
 }
 
