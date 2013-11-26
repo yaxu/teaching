@@ -27,15 +27,18 @@
 
 # Further reading
 
-\includegraphics[width=0.5\textwidth]{../images/learningprocessing.jpg}
+\includegraphics[width=0.4\textwidth]{../images/learningprocessing.jpg}
 
 Video lectures:
 <http://icm.shiffman.net/>
 
+More books:
+<http://processing.org/books/>
+
 # Open processing
 
 \begin{center}
-\includegraphics[width=0.5\textwidth]{../images/processingorg.png}
+\includegraphics[width=0.5\textwidth]{../images/openprocessing.png}
 
 \url{https://openprocessing.org/}
 \end{center}
@@ -73,7 +76,11 @@ rect(30,30,10,10);
 
 # Change the brush colour
 
+Specify colour as red, green and blue components, from 0 to 255.
+
 ~~~~ {#mycode .java}
+stroke(0,0,0);
+
 fill(255,0,0);
 ellipse(10,10,10,10);
 
@@ -83,6 +90,9 @@ rect(30,30,10,10);
 fill(0,0,255);
 // x1, y1, x2, y2, x3, y3
 triangle(40,40,50,40,55,45);
+
+stroke(0,0,255);
+line(0,0,50,50);
 ~~~~
 
 # Exercise 1
@@ -93,9 +103,9 @@ Reminder:
 
 ~~~~ {#mycode .java}
 // red, green, blue component from 0 to 255
-fill(255, 255, 255);
+fill(0, 255, 255);
 // Same, but for line colour (e.g. around a shape)
-stroke(255, 255, 255);
+stroke(255, 0, 255);
 
 // x, y, width, height in pixels
 ellipse(10, 10, 10, 10);
@@ -115,7 +125,7 @@ while (count < 10) {
   fill((255/10) * count, 255, 0);
   rect(count * 10, 10, 10, 10);
   // add 1 to count
-  count++;
+  count = count + 1;
 } 
 ~~~~
 
@@ -150,17 +160,18 @@ kick.trigger();
 
 # Animation the Processing way
 
-Does things in `setup()` once, and then in `draw()` every frame
+Follows code in `setup()` once, and then in `draw()` every frame.
 
 ~~~~ {#mycode .java}
-Minim minim;
+// global variables
 AudioSample kick;
 
 void setup() {
   // make the canvas a bit bigger
-  setup(300,300);
-  minim = new Minim(this);
+  size(300,300);
+  Minim minim = new Minim(this);
   kick = minim.loadSample("kick.wav");
+  // draw two frames per second
   frameRate(2);
 }
 
@@ -170,15 +181,33 @@ void draw() {
 }
 ~~~~
 
-# Exercise 3
+# Exercise 3 - Movement
 
-1. Make a shape move
-    * Add a global `float` variable called `bally` that stores the y position of the shape
-    * Add another global `float` variable that stores the speed of the shape
+~~~~ {#mycode .java}
+// global variables
+float bally = 0;
+float ballx = 150;
+
+void setup() {
+  // make the canvas a bit bigger
+  size(300,300);
+}
+
+void draw() {
+  ellipse(ballx,bally,10,10);
+}
+~~~~
+
+1. Make the shape move
+    * Add another global variable that stores the speed of the shape
     * Add `speed` to `bally` every frame (i.e. within `draw()`)
+
+# Exercise 3 - Movement
+
 2. Make the shape bounce off the edges of the sketch and make a sound
     * have an `if` statement that tests whether `bally > height`
     * when that is true, play a sound and invert `speed`, (i.e. set `speed = 0 - speed`)
     * do something similar for the top of the sketch (i.e. when `bally` < 0)
+    * add the code to load a sound in `setup()`, and have a bounce trigger it in `draw()`
 3. Challenges: have multiple shapes, or add gravity effect.
 4. Challenge question: Could we replace the `float` variables with `int` variables? What is the advantage of either?

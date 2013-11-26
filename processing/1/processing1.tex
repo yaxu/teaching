@@ -100,16 +100,18 @@
 
 \begin{frame}[fragile]\frametitle{Further reading}
 
-\includegraphics[width=0.5\textwidth]{../images/learningprocessing.jpg}
+\includegraphics[width=0.4\textwidth]{../images/learningprocessing.jpg}
 
 Video lectures: \url{http://icm.shiffman.net/}
+
+More books: \url{http://processing.org/books/}
 
 \end{frame}
 
 \begin{frame}\frametitle{Open processing}
 
 \begin{center}
-\includegraphics[width=0.5\textwidth]{../images/processingorg.png}
+\includegraphics[width=0.5\textwidth]{../images/openprocessing.png}
 
 \url{https://openprocessing.org/}
 \end{center}
@@ -167,8 +169,12 @@ function call
 
 \begin{frame}[fragile]\frametitle{Change the brush colour}
 
+Specify colour as red, green and blue components, from 0 to 255.
+
 \begin{Shaded}
 \begin{Highlighting}[]
+\FunctionTok{stroke}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{);}
+
 \FunctionTok{fill}\NormalTok{(}\DecValTok{255}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{);}
 \FunctionTok{ellipse}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{);}
 
@@ -178,6 +184,9 @@ function call
 \FunctionTok{fill}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{255}\NormalTok{);}
 \CommentTok{// x1, y1, x2, y2, x3, y3}
 \FunctionTok{triangle}\NormalTok{(}\DecValTok{40}\NormalTok{,}\DecValTok{40}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{40}\NormalTok{,}\DecValTok{55}\NormalTok{,}\DecValTok{45}\NormalTok{);}
+
+\FunctionTok{stroke}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{255}\NormalTok{);}
+\FunctionTok{line}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{50}\NormalTok{);}
 \end{Highlighting}
 \end{Shaded}
 
@@ -192,9 +201,9 @@ Reminder:
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{// red, green, blue component from 0 to 255}
-\FunctionTok{fill}\NormalTok{(}\DecValTok{255}\NormalTok{, }\DecValTok{255}\NormalTok{, }\DecValTok{255}\NormalTok{);}
+\FunctionTok{fill}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{255}\NormalTok{, }\DecValTok{255}\NormalTok{);}
 \CommentTok{// Same, but for line colour (e.g. around a shape)}
-\FunctionTok{stroke}\NormalTok{(}\DecValTok{255}\NormalTok{, }\DecValTok{255}\NormalTok{, }\DecValTok{255}\NormalTok{);}
+\FunctionTok{stroke}\NormalTok{(}\DecValTok{255}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{255}\NormalTok{);}
 
 \CommentTok{// x, y, width, height in pixels}
 \FunctionTok{ellipse}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{);}
@@ -218,7 +227,7 @@ Reminder:
   \FunctionTok{fill}\NormalTok{((}\DecValTok{255}\NormalTok{/}\DecValTok{10}\NormalTok{) * count, }\DecValTok{255}\NormalTok{, }\DecValTok{0}\NormalTok{);}
   \FunctionTok{rect}\NormalTok{(count * }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{);}
   \CommentTok{// add 1 to count}
-  \NormalTok{count++;}
+  \NormalTok{count = count + }\DecValTok{1}\NormalTok{;}
 \NormalTok{\} }
 \end{Highlighting}
 \end{Shaded}
@@ -262,19 +271,20 @@ Add the sound to your sketch with Sketch -\textgreater{} Add file
 
 \begin{frame}[fragile]\frametitle{Animation the Processing way}
 
-Does things in \texttt{setup()} once, and then in \texttt{draw()} every
-frame
+Follows code in \texttt{setup()} once, and then in \texttt{draw()} every
+frame.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{Minim minim;}
+\CommentTok{// global variables}
 \NormalTok{AudioSample kick;}
 
 \DataTypeTok{void} \FunctionTok{setup}\NormalTok{() \{}
   \CommentTok{// make the canvas a bit bigger}
-  \FunctionTok{setup}\NormalTok{(}\DecValTok{300}\NormalTok{,}\DecValTok{300}\NormalTok{);}
-  \NormalTok{minim = }\KeywordTok{new} \FunctionTok{Minim}\NormalTok{(}\KeywordTok{this}\NormalTok{);}
+  \FunctionTok{size}\NormalTok{(}\DecValTok{300}\NormalTok{,}\DecValTok{300}\NormalTok{);}
+  \NormalTok{Minim minim = }\KeywordTok{new} \FunctionTok{Minim}\NormalTok{(}\KeywordTok{this}\NormalTok{);}
   \NormalTok{kick = minim.}\FunctionTok{loadSample}\NormalTok{(}\StringTok{"kick.wav"}\NormalTok{);}
+  \CommentTok{// draw two frames per second}
   \FunctionTok{frameRate}\NormalTok{(}\DecValTok{2}\NormalTok{);}
 \NormalTok{\}}
 
@@ -287,23 +297,44 @@ frame
 
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Exercise 3}
+\begin{frame}[fragile]\frametitle{Exercise 3 - Movement}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// global variables}
+\DataTypeTok{float} \NormalTok{bally = }\DecValTok{0}\NormalTok{;}
+\DataTypeTok{float} \NormalTok{ballx = }\DecValTok{150}\NormalTok{;}
+
+\DataTypeTok{void} \FunctionTok{setup}\NormalTok{() \{}
+  \CommentTok{// make the canvas a bit bigger}
+  \FunctionTok{size}\NormalTok{(}\DecValTok{300}\NormalTok{,}\DecValTok{300}\NormalTok{);}
+\NormalTok{\}}
+
+\DataTypeTok{void} \FunctionTok{draw}\NormalTok{() \{}
+  \FunctionTok{ellipse}\NormalTok{(ballx,bally,}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{enumerate}[1.]
 \item
-  Make a shape move
+  Make the shape move
 
   \begin{itemize}
   \item
-    Add a global \texttt{float} variable called \texttt{bally} that
-    stores the y position of the shape
-  \item
-    Add another global \texttt{float} variable that stores the speed of
-    the shape
+    Add another global variable that stores the speed of the shape
   \item
     Add \texttt{speed} to \texttt{bally} every frame (i.e.~within
     \texttt{draw()})
   \end{itemize}
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Exercise 3 - Movement}
+
+\begin{enumerate}[1.]
+\setcounter{enumi}{1}
 \item
   Make the shape bounce off the edges of the sketch and make a sound
 
@@ -317,6 +348,9 @@ frame
   \item
     do something similar for the top of the sketch (i.e.~when
     \texttt{bally} \textless{} 0)
+  \item
+    add the code to load a sound in \texttt{setup()}, and have a bounce
+    trigger it in \texttt{draw()}
   \end{itemize}
 \item
   Challenges: have multiple shapes, or add gravity effect.
